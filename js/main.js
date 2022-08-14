@@ -1,6 +1,8 @@
+//1. Часы и календарь; //2. Приветствие
+
 const TIME = document.querySelector('.time');
 const DATE = document.querySelector('.date');
-
+const GREETING = document.querySelector('.greeting');
 
 function getWeekDay() {
     const date = new Date();
@@ -18,18 +20,37 @@ function showDate() {
 };
 
 
+function showGreeting() {
+    const date = new Date();
+    const hours = date.getHours();//Текущее время в часах возвращает метод getHours()
+    const timesOfDayArray = ['morning', 'afternoon', 'evening', 'night'];
+
+    
+    let timeOfDay  = (Math.trunc(hours) > 18) ? timesOfDayArray[2] :
+        (Math.trunc(hours) > 12) ? timesOfDayArray[1] :
+        (Math.trunc(hours) > 6) ? timesOfDayArray[0] :
+        timesOfDayArray[3];
+
+
+    GREETING.textContent = `Good ${timeOfDay}`;
+};
+
 function showTime() {
     const date = new Date();// позволяет  получить текущие дату и время
     const currentTime = date.toLocaleTimeString();//из строки с датой и временем получить только время
     TIME.innerHTML = currentTime; //отобразить внутри элемента 
     showDate();
     getWeekDay();
+    showGreeting();
     setTimeout(showTime, 0);//setTimeout(func, 0) или просто setTimeout(func).
     //Это планирует вызов func настолько быстро, насколько это возможно. 
     //Но планировщик будет вызывать функцию только после завершения выполнения текущего кода.
 }
 
 showTime();
+
+
+
 
 
 
