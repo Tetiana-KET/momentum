@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="assets/favicon.ico" rel="shortcut icon" />
+    <link href="assets/svg/favicon.ico" rel="shortcut icon" />
     <link rel="stylesheet" href="css/owfont-regular.css" />
     <link rel="stylesheet" href="css/style.css" />
     <title>momentum</title>
@@ -11,15 +11,37 @@
   <body>
     <header class="header">
       <div class="player">
-        <div class="player-controls">
+        <div class="progress-wrapper">
+          <h3 class="current-song-title"></h3>
+          
+          <div class="progress-container">
+            <div class="prosress"></div>
+          </div>
+  
+          <div class="timer">
+            <span class="current-time">00:00 / </span><span class="song-duration"></span>
+          </div>
+        </div>
+
+        <div class="player-controls buttons">
           <button class="play-prev player-icon"></button>
           <button class="play player-icon"></button>
           <button class="play-next player-icon"></button>
         </div>
-        <ul class="play-list"></ul>
+
+        <div class="volume-wrap">
+          <div class="volume-btn"></div>
+          <div class="volume-progress-container">
+            <div class="volume-progress"></div>
+          </div>
+        </div>
       </div>
+
+      <ul class="play-list">
+      </ul>
+
       <div class="weather">
-        <input type="text" class="city" value="Париж" />
+        <input type="text" class="city" value="Минск" />
         <i class="weather-icon owf"></i>
         <div class="weather-error"></div>
         <div class="description-container">
@@ -49,6 +71,7 @@
         <div class="author"></div>
       </div>
     </footer>
-    <script src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <script src="js/selfEsteem.js"></script>
   </body>
 </html>
