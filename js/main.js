@@ -194,10 +194,6 @@ changeQuote.addEventListener('click', getQuotes);
     let currentSong = 0;//Песня по умолчанию
     let currentVolume = .1;
     const audio = new Audio();
-
-
-    //Название песен
-    const songs = [];//(5) ['Aqua Caelestis', 'River Flows In You', 'Birds', 'Ennio Morricone', 'Summer Wind']
     
     // CREATE PLAY LIST
     playList.forEach((track, index) => {
@@ -208,20 +204,19 @@ changeQuote.addEventListener('click', getQuotes);
     }); 
 
     const playListItems = Array.from(document.querySelectorAll('.play-item'));
+
     playListItems.forEach( (item, index, array) => {
 
-        item.addEventListener('click', (item, index) => {
-            const isPlaying = player.classList.contains('playing');
+        item.addEventListener('click', () => {
+            const isActive = item.classList.contains('item-active');
             currentSong = array.indexOf(event.target);//GET INDEXT OF CLICKED SONG
-            setSong ();
-            makeMusicOnOff ();
-            unSetActiveSong ();
-            
-            if (isPlaying) {
+            if (isActive) {
                 playListItems[currentSong].classList.remove('item-active')
-                
+                pauseAudio();   
             } else {
                 playListItems[currentSong].classList.add('item-active')
+                setSong();
+                playAudio();
             }
         });
     })
